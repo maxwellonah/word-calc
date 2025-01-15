@@ -3,16 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>word calculator</title>
+    <title>Word Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1> word based calculator</h1> <br>
-  <h2> A course undertaken by 400 level software engineering <br>
-student of veritas university in the course sen 405 to demonstrate <br>
-open source software development.
-</h2>
-
-
-
+    <div class="container">
+        <h1>Word-Based Calculator</h1>
+        <h2>
+            A course undertaken by 400 level software engineering
+            <br>
+            students of Veritas University in the course SEN 405 to demonstrate
+            <br>
+            open-source software development.
+        </h2>
+        <div class="calculator">
+            <input type="text" id="operation" placeholder="Type operation (e.g., add, subtract)">
+            <input type="number" id="num1" placeholder="Enter first number">
+            <input type="number" id="num2" placeholder="Enter second number">
+            <button onclick="calculate()">Calculate</button>
+            <p id="result"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
