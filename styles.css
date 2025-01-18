@@ -1,171 +1,75 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 body {
+    margin: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: #f0f0f0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
 }
 
 .container {
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-    margin: 1rem;
-}
-
-h1 {
+    width: 350px;
+    padding: 20px;
+    background: #6266b3;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
     text-align: center;
-    color: #333;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
 }
 
 .display {
     width: 100%;
     height: 50px;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-size: 20px;
     text-align: right;
-    border: 2px solid #ddd;
-    border-radius: 0.5rem;
-    background: #f8f9fa;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .word-display {
     width: 100%;
-    min-height: 80px;
-    max-height: 200px;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    font-size: 1.1rem;
-    line-height: 1.5;
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: 14px;
     text-align: left;
-    border: 2px solid #ddd;
-    border-radius: 0.5rem;
-    background: #f8f9fa;
-    overflow-y: auto;
-    word-wrap: break-word;
-    /* Enable scrolling with custom styling */
-    scrollbar-width: thin;
-    scrollbar-color: #888 #f1f1f1;
-}
-
-/* Custom scrollbar styling for Webkit browsers */
-.word-display::-webkit-scrollbar {
-    width: 8px;
-}
-
-.word-display::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-}
-
-.word-display::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
-
-.word-display::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #ff1414;
+    background: #f9f9f9;
 }
 
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0.8rem;
+    gap: 10px;
 }
 
 .button {
-    padding: 1rem;
-    font-size: 1.2rem;
+    padding: 15px;
+    font-size: 18px;
     border: none;
-    border-radius: 0.5rem;
-    background: #e9ecef;
+    border-radius: 5px;
+    background-color: #181e25;
+    color: white;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.button:hover {
-    background: #dee2e6;
 }
 
 .button:active {
-    transform: scale(0.95);
+    background-color: #b0c2d1;
 }
 
-.clear {
-    background: #dc3545;
-    color: white;
+.button:hover {
+    background-color: rgb(109, 140, 235);
+
 }
 
-.clear:hover {
-    background: #c82333;
+.button.clear {
+    background-color: #ec7581;
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-    .container {
-        padding: 1rem;
-        margin: 0.5rem;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .display {
-        height: 45px;
-        font-size: 1.3rem;
-    }
-
-    .word-display {
-        min-height: 60px;
-        font-size: 1rem;
-        padding: 0.8rem;
-    }
-
-    .button {
-        padding: 0.8rem;
-        font-size: 1.1rem;
-    }
-}
-
-/* For very small screens */
-@media (max-width: 320px) {
-    .container {
-        padding: 0.8rem;
-    }
-
-    h1 {
-        font-size: 1.3rem;
-    }
-
-    .button {
-        padding: 0.6rem;
-        font-size: 1rem;
-    }
-}
-
-/* For larger screens */
-@media (min-width: 768px) {
-    .container {
-        max-width: 600px;
-    }
-
-    .word-display {
-        font-size: 1.2rem;
-        max-height: 250px;
-    }
+.button.clear:active {
+    background-color: #a71d2a;
 }
