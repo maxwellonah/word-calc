@@ -15,6 +15,7 @@ const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'
 const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
 const teens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
 
+// Define large number scales
 const scales = [
   '', 'Thousand', 'Million', 'Billion', 'Trillion', 'Quadrillion', 'Quintillion'
 ];
@@ -44,85 +45,43 @@ function numberToWords(num) {
     groups.unshift(numStr.slice(Math.max(0, i - 3), i));
   }
 
+  // Convert each group
   function convertGroup(n) {
     let result = '';
     n = parseInt(n);
     
     // Handle hundreds
     if (n >= 100) {
-      result += ones[Math.floor(n / 100)] + ' Hundred';
+      result += ones[Math.floor(n / 100)] + ' Hundred ';
       n %= 100;
-      if (n > 0) result += ' and ';
     }
     
     // Handle tens
     if (n >= 20) {
-      result += tens[Math.floor(n / 10)];
+      result += tens[Math.floor(n / 10)] + ' ';
       n %= 10;
-      if (n > 0) result += '-' + ones[n];
     } else if (n >= 10) {
-      result += teens[n - 10];
-    } else if (n > 0) {
-      result += ones[n];
+      result += teens[n - 10] + ' ';
+      n = 0;
+    }
+    
+    // Handle ones
+    if (n > 0) {
+      result += ones[n] + ' ';
     }
     
     return result;
   }
 
   // Process all groups with their respective scales
-  const parts = [];
-  let hasNonZeroAfter = false;
-
-  // First pass to check for non-zero values
-  for (let i = groups.length - 1; i >= 0; i--) {
-    if (parseInt(groups[i]) !== 0) {
-      hasNonZeroAfter = true;
-      break;
-    }
-  }
-
-  // Second pass to build the words
-  groups.forEach((group, index) => {
+  const words = groups.map((group, index) => {
     const groupNum = parseInt(group);
-    if (groupNum === 0) return;
-    
-    let part = convertGroup(groupNum);
+    if (groupNum === 0) return '';
     const scale = scales[groups.length - 1 - index];
-    
-    if (scale) {
-      part += ' ' + scale;
-    }
+    return convertGroup(group) + (scale ? scale + ' ' : '');
+  }).filter(word => word !== '');
 
-    // Add comma if not the last non-zero group
-    if (hasNonZeroAfter) {
-      part += ', ';
-    }
-
-    parts.push(part);
-    hasNonZeroAfter = false;
-
-    // Check remaining groups for non-zero values
-    for (let i = index + 1; i < groups.length; i++) {
-      if (parseInt(groups[i]) !== 0) {
-        hasNonZeroAfter = true;
-        break;
-      }
-    }
-  });
-
-  // Join all parts and handle final formatting
-  let result = parts.join('');
-  
-  // Remove trailing comma and space if present
-  result = result.replace(/,\s*$/, '');
-  
-  // Add 'and' before the last number if it's less than 100
-  const lastGroup = parseInt(groups[groups.length - 1]);
-  if (groups.length > 1 && lastGroup > 0 && lastGroup < 100 && !result.endsWith('and')) {
-    result = result.replace(/,([^,]*)$/, ' and$1');
-  }
-
-  return result;
+  return words.join('').trim();
 }
 
 function appendNumber(number) {
