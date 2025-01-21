@@ -8,7 +8,7 @@ const numberWords = {
   '0': 'Zero', '1': 'One', '2': 'Two', '3': 'Three', '4': 'Four',
   '5': 'Five', '6': 'Six', '7': 'Seven', '8': 'Eight', '9': 'Nine',
   '+': 'Plus', '-': 'Minus', '*': 'Multiply', '/': 'Divide',
-  '=': 'Equals', '^': 'Power'
+  '=': 'Equals', '^': 'Power', '!': 'Factorial'
 };
 
 const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
@@ -146,6 +146,12 @@ function calculate() {
   const num1 = parseFloat(previousNumber);
   const num2 = parseFloat(currentNumber);
 
+  function factorial(n) { 
+    if (n === 0 || n === 1) { 
+      return 1;
+    } 
+    return n * factorial(n - 1);
+  }
   if (operator === '^') {
     result = Math.pow(num1, num2);
   } else {
@@ -173,6 +179,7 @@ function clearDisplay() {
 
 function updateDisplay() {
   display.value = previousNumber + (operator || '') + currentNumber;
+
   
   let words;
   if (operator) {
