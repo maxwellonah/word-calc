@@ -55,7 +55,7 @@ function numberToWords(num) {
       if (n > 0) result += ' and ';
     }
     
-    // Handle tens
+    // Handle the tens
     if (n >= 20) {
       result += tens[Math.floor(n / 10)];
       n %= 10;
@@ -65,7 +65,7 @@ function numberToWords(num) {
     } else if (n > 0) {
       result += ones[n];
     }
-    
+    // Returning the result
     return result;
   }
 
@@ -93,7 +93,7 @@ function numberToWords(num) {
       part += ' ' + scale;
     }
 
-    // Add comma if not the last non-zero group
+    // Added comma if not the last non-zero group
     if (hasNonZeroAfter) {
       part += ', ';
     }
@@ -101,7 +101,7 @@ function numberToWords(num) {
     parts.push(part);
     hasNonZeroAfter = false;
 
-    // Check remaining groups for non-zero values
+    // Checking the remaining groups for non-zero values
     for (let i = index + 1; i < groups.length; i++) {
       if (parseInt(groups[i]) !== 0) {
         hasNonZeroAfter = true;
@@ -110,7 +110,7 @@ function numberToWords(num) {
     }
   });
 
-  // Join all parts and handle final formatting
+  // Joining all the parts and handle final formatting
   let result = parts.join('');
   
   // Remove trailing comma and space if present
