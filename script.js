@@ -194,3 +194,12 @@ function updateDisplay() {
   
   wordDisplay.textContent = words;
 }
+
+//Okereafor Samuel Logical NOT
+function logicalNot() {
+  if (currentNumber === '') return;
+  const num = parseInt(currentNumber);
+  const result = ~num; // Bitwise NOT operation
+  currentNumber = result.toString();
+  updateDisplay();
+}
