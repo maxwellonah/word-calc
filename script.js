@@ -203,3 +203,12 @@ function logicalNot() {
   currentNumber = result.toString();
   updateDisplay();
 }
+
+
+// function to select random number from 0.0 through 1.0
+function generateRandomNumber() {
+  // Generate a random number between 0 and 1
+  const randomNumber = Math.random();
+  currentNumber = randomNumber.toString();
+  updateDisplay();
+}
