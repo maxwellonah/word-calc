@@ -212,3 +212,25 @@ function generateRandomNumber() {
   currentNumber = randomNumber.toString();
   updateDisplay();
 }
+
+// Function to calculate the cube root of the current number(ADUKU DAVID 7434)
+function cubeRoot() {
+  // Check if there's a number currently displayed; if not, do nothing
+  if (currentNumber === '') return;
+
+  // Parse the current number into a float for mathematical operations
+  const num = parseFloat(currentNumber);
+
+  // Calculate the cube root using the built-in Math.cbrt() function
+  const result = Math.cbrt(num);
+
+  // Convert the result back to a string and set it as the current number
+  currentNumber = result.toString();
+
+  // Update the display to show the result and its word equivalent
+  updateDisplay();
+}
+
+// Add "Cube Root" to the numberWords object
+// This ensures the operation is displayed as "Cube Root" in the word display
+numberWords['cbrt'] = 'Cube Root';
