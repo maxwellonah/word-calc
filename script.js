@@ -234,3 +234,27 @@ function cubeRoot() {
 // Add "Cube Root" to the numberWords object
 // This ensures the operation is displayed as "Cube Root" in the word display
 numberWords['cbrt'] = 'Cube Root';
+
+function displayPi() {
+  currentNumber = Math.PI.toString();
+  updateDisplay();
+}
+
+function calculateCosine() {
+  // Check if there's a number currently displayed; if not, do nothing
+  if (currentNumber === '') return;
+
+  // Parse the current number into a float for mathematical operations
+  const num = parseFloat(currentNumber);
+
+  // Calculate the cosine using the built-in Math.cos() function
+  const result = Math.cos(num);
+
+  // Convert the result back to a string and set it as the current number
+  currentNumber = result.toString();
+
+  // Update the display to show the result
+  updateDisplay();
+}
+
+
